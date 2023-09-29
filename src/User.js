@@ -11,7 +11,7 @@ class User {
   login(password){
     // verify password here
     if (password != this.password){
-      throw new Error("Incorrect Password");
+      throw new Error("incorrect password");
     } else {
       return this.loggedIn = true;
     }
