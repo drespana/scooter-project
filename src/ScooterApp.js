@@ -2,7 +2,6 @@
 const User = require('./User')
 const Scooter = require('./Scooter')
 
-
 class ScooterApp {
   // ScooterApp code here
   constructor(stations, registeredUsers){
@@ -15,7 +14,6 @@ class ScooterApp {
     }
     this.stations = stations;
   }
-
 
 // registerUsers() method // i really hope this works, i used my whole noodle
   registerUsers(username, password, age){
@@ -43,7 +41,6 @@ class ScooterApp {
     return user;
   }
 
-
 // createScooter method ==> calls Scooter class // i will be flabbergasted if this works
 createScooter(station){
 
@@ -59,21 +56,19 @@ createScooter(station){
   return scooter;
 }
 
-
 // loginUser() method // how do you call the user class to verify password?????
   loginUser(username, password){
     // locate the registered user by name and call its login method
     for (let i = 0; i < this.registerUsers.length; i++){
       if (username in this.registeredUsers){
         // if username is found, verify password
-          User.login(password);
-          console.log("user has been logged in")  
+          User.login(password); // calls the class, not the instance of the class 
+          console.log("user has been logged in"); // if it works, which it does not
       } else {
-        throw new Error("username or password is incorrect")
+        throw new Error("username or password is incorrect"); // this feels like correcting someone when youre still wronge
       }
     }
   }
-
 
 // logoutUser() method ==> calls User class method// 
   logoutUser(username){
@@ -89,15 +84,15 @@ createScooter(station){
     // log "user is logged out" to the console
   }
 
-  
-
 // dockScooter method ==> calls Scooter class method//
- // dockScooter(scooter, station){
-      // add the scooter to the station's scooter list
-      // dock the scooter 
-      // Throw "no such station" error if the station does not exist
+  dockScooter(scooter, station){
+       if (station in this.stations['this.staion']){
+        Scooter.dock(station);
+       } else { 
+        throw new Error("no such station");
+      }
       // Throw "scooter already at station" error if the scooter is already there
-  //}
+  }
 
 
 
