@@ -52,19 +52,19 @@ class ScooterApp {
   return scooter;
 } // return scooter object // 
 
-// loginUser() method // how do you call the user class to verify password?????
+// loginUser() method // 
   loginUser(username, password){
-    // locate the registered user by name and call its login method
+    // locate the registered user by name and call its login method //
     for (let i = 0; i < this.registerUsers.length; i++){
       if (username in this.registeredUsers){
-        // if username is found, verify password
-        User.login(password); // calls the class, not the instance of the class 
-        console.log("user has been logged in"); // if it works, which it does not
+        // if username is found, verify password //
+        User.login(password); 
+        console.log("user has been logged in"); 
       } else {
-        throw new Error("username or password is incorrect"); // this feels like correcting someone when youre still wrong
+        throw new Error("username or password is incorrect"); 
       }
     }
-  }
+  } // call login() method from User class; return error if username or password is incorrect; OTHERWISE login user //
 
 // logoutUser() method ==> calls User class method// 
   logoutUser(username){

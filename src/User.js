@@ -15,12 +15,12 @@ class User {
     } else {
       return this.loggedIn = true;
     }
-  }
+  } // returns loggedIn = true //
 
 // logout() method ==> sets loggedIn to false // 
   logout(){
     return this.loggedIn = false;
   }
-}
+} // returns loggedIn = false //
 
 module.exports = User
