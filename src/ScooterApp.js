@@ -18,43 +18,39 @@ class ScooterApp {
 // registerUsers() method // i really hope this works, i used my whole noodle
   registerUsers(username, password, age){
     this.password = password;
-
     // check if username already exists
     if (username in this.registeredUsers){
       throw new Error("already registered")
     } else {
       this.username = username;
     }
-    
     // check age before setting and return error if under 18
     if (age < 18){
-    throw new Error("Too young to register.")
+    throw new Error("too young to register")
     } else {
       this.age = age;
-    }
-
-    // Return user object
+    } // sets the age if the input is 18+; returns error if <18 //
+    // create user object
     const user = this.username;
     user = new User(this.username, this.password, this.age);
     this.registeredUsers.push(user);
     console.log("user has been registered");
     return user;
-  }
+  } // return user object
 
 // createScooter method ==> calls Scooter class // i will be flabbergasted if this works
 createScooter(station){
-
   if (station in this.stations){
     this.station = station;
   } else {
-    throw new Error("no such station")
-  }
-
+    throw new Error("no such station");
+  } // return an error //
+  // create scooter object //
   const scooter = new Scooter(this.station);
-  this.stations['this.station'].push(scooter.serial);
-  console.log("created new scooter")
+  this.stations['this.station'].push(scooter.serial = this.stations['this.statinon'].length+1);
+  console.log("created new scooter");
   return scooter;
-}
+} // return scooter object // 
 
 // loginUser() method // how do you call the user class to verify password?????
   loginUser(username, password){
@@ -65,7 +61,7 @@ createScooter(station){
           User.login(password); // calls the class, not the instance of the class 
           console.log("user has been logged in"); // if it works, which it does not
       } else {
-        throw new Error("username or password is incorrect"); // this feels like correcting someone when youre still wronge
+        throw new Error("username or password is incorrect"); // this feels like correcting someone when youre still wrong
       }
     }
   }
@@ -80,38 +76,32 @@ createScooter(station){
             throw new Error("no such user is logged in")
         }
     }
-    // locate the registered user and call its logout method
-    // log "user is logged out" to the console
   }
 
 // dockScooter method ==> calls Scooter class method//
   dockScooter(scooter, station){
        if (station in this.stations['this.staion']){
+        if (scooter.serial in this.station){
+          throw new Error("scooter already at station");
+        }
         Scooter.dock(station);
        } else { 
         throw new Error("no such station");
       }
-      // Throw "scooter already at station" error if the scooter is already there
   }
 
-
-
 // rentScooter method ==> calls Scooter and User class methods//
-  //rentScooter(scooter, user){
-      // for (let i = 0; i < this.stations['this.station'].length){
-            // if (scooter.serial in station[i]){
-                // this.stations['this.station']
-            //}
-      //}
-      // locate the given scooter at one of the stations
-      // remove the scooter from that station
-      // rent the scooter to the user
-      // log "scooter is rented" to the console
-      // if the scooter is already rented, 
-          // throw the error "scooter already rented"
- // }
+   rentScooter(scooter, user){
+      for (let i = 0; i < this.stations['this.station'].length; i++){
+        // locate scooter
+             if (scooter.serial in station[i]){
+                Scooter.rent(user);
+                console.log("scooter is rented");
+            } // return error "scooter already rented"; OTHERWISE rent() and log "scooter is rented"
+      }
+  }
 
- //print()
+ // print(){console.log()}
 
 }
 
