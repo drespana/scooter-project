@@ -14,7 +14,6 @@ describe('scooter methods', () => {
   // tests here!
 
   //rent method
-  
 
   //dock method
 

@@ -20,10 +20,10 @@ class ScooterApp {
     this.password = password;
     // check if username already exists
     if (username in this.registeredUsers){
-      throw new Error("already registered")
+      throw new Error("already registered");
     } else {
       this.username = username;
-    }
+    } // set username 
     // check age before setting and return error if under 18
     if (age < 18){
     throw new Error("too young to register")
@@ -39,12 +39,12 @@ class ScooterApp {
   } // return user object
 
 // createScooter method ==> calls Scooter class // i will be flabbergasted if this works
-createScooter(station){
-  if (station in this.stations){
-    this.station = station;
-  } else {
-    throw new Error("no such station");
-  } // return an error //
+  createScooter(station){
+    if (station in this.stations){
+      this.station = station;
+    } else {
+      throw new Error("no such station");
+    } // return an error //
   // create scooter object //
   const scooter = new Scooter(this.station);
   this.stations['this.station'].push(scooter.serial = this.stations['this.statinon'].length+1);
@@ -58,8 +58,8 @@ createScooter(station){
     for (let i = 0; i < this.registerUsers.length; i++){
       if (username in this.registeredUsers){
         // if username is found, verify password
-          User.login(password); // calls the class, not the instance of the class 
-          console.log("user has been logged in"); // if it works, which it does not
+        User.login(password); // calls the class, not the instance of the class 
+        console.log("user has been logged in"); // if it works, which it does not
       } else {
         throw new Error("username or password is incorrect"); // this feels like correcting someone when youre still wrong
       }
@@ -69,40 +69,44 @@ createScooter(station){
 // logoutUser() method ==> calls User class method// 
   logoutUser(username){
     for (let i = 0; i < this.registeredUsers.length; i++){
-        if (username == this.registeredUsers[i]){
-           username.logout();
-           console.log("user is logged out");
-        } else {
-            throw new Error("no such user is logged in")
-        }
+      if (username == this.registeredUsers[i]){
+        username.logout();
+          console.log("user is logged out");
+      } else {
+          throw new Error("no such user is logged in")
+      }
     }
   }
 
 // dockScooter method ==> calls Scooter class method//
   dockScooter(scooter, station){
-       if (station in this.stations['this.staion']){
-        if (scooter.serial in this.station){
-          throw new Error("scooter already at station");
-        }
-        Scooter.dock(station);
-       } else { 
+    if (station in this.stations['this.staion']){
+      if (scooter.serial in this.station){
+        throw new Error("scooter already at station");
+        } else {
+            Scooter.dock(station);
+          }
+      } else { 
         throw new Error("no such station");
       }
   }
 
 // rentScooter method ==> calls Scooter and User class methods//
-   rentScooter(scooter, user){
-      for (let i = 0; i < this.stations['this.station'].length; i++){
-        // locate scooter
-             if (scooter.serial in station[i]){
-                Scooter.rent(user);
-                console.log("scooter is rented");
-            } // return error "scooter already rented"; OTHERWISE rent() and log "scooter is rented"
-      }
+  rentScooter(scooter, user){
+    for (let i = 0; i < this.stations['this.station'].length; i++){
+      // locate scooter
+      if (scooter.serial in station[i]){
+        Scooter.rent(user);
+        console.log("scooter is rented");
+      } // return error "scooter already rented"; OTHERWISE rent() and log "scooter is rented"
+    }
   }
-
- // print(){console.log()}
-
+  print(){
+    console.log("User info : "+User+";\n");
+    console.log("Scooter info : "+Scooter+";\n");
+    console.log("Stations : "+ this.stations + ";\n");
+    console.log("Users : "+ this.registeredUsers +";");
+  }
 }
 
-module.exports = ScooterApp
+module.exports = ScooterApps
