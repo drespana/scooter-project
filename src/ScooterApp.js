@@ -63,8 +63,8 @@ class ScooterApp {
       } else {
         throw new Error("username or password is incorrect"); 
       }
-    }
-  } // call login() method from User class; return error if username or password is incorrect; OTHERWISE login user //
+    }// call login() method from User class; return error if username or password is incorrect; OTHERWISE login user //
+  } 
 
 // logoutUser() method ==> calls User class method// 
   logoutUser(username){
@@ -75,7 +75,7 @@ class ScooterApp {
       } else {
           throw new Error("no such user is logged in")
       }
-    }
+    } ;
   }
 
 // dockScooter method ==> calls Scooter class method//
@@ -98,9 +98,11 @@ class ScooterApp {
       if (scooter.serial in station[i]){
         Scooter.rent(user);
         console.log("scooter is rented");
-      } // return error "scooter already rented"; OTHERWISE rent() and log "scooter is rented"
-    }
+      } else {
+        throw new Error("scooter already rented")
+    }  // return error "scooter already rented"; OTHERWISE rent() and log "scooter is rented"
   }
+
   print(){
     console.log("User info : "+User+";\n");
     console.log("Scooter info : "+Scooter+";\n");

@@ -10,8 +10,6 @@ const scooterApp = new ScooterApp();
 // register user
 describe("registerUser method tests", () => {
   // beforeAll/beforeEach
-
-  
   test("Should return instance of User", () => {
     let response = scooterApp.registerUser("Joe Bloggs", "test123", 21);
     expect(response).toBeInstanceOf(User);
@@ -28,11 +26,12 @@ describe("registerUser method tests", () => {
   })
 
   // test rent scooter method
-  
+  test ("Should display scooter is rented", () => {
+    expect();
+  })
 
+  // test dock scooter method
+  test ("Should return scooter to end of station array", () => {
+
+  })
 });
-
-
-// rent scooter
-
-// dock scooter

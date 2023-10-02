@@ -14,11 +14,16 @@ describe('scooter methods', () => {
   // tests here!
 
   //rent method
+  test ("adds user to scooter", () => {
+    expect(Scooter.user).toBe(User.username);
+  })
 
   //dock method
+  test ("clears user", () => {
+    expect(Scooter.user).toBe(null);
+  })
 
-  //requestRepair method
-
-  //charge method
-
+  test ("adds station", ()=> {
+    expect (Scooter.station).toBe(!null);
+  })
 })
