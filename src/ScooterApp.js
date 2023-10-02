@@ -73,9 +73,9 @@ class ScooterApp {
         username.logout();
           console.log("user is logged out");
       } else {
-          throw new Error("no such user is logged in")
+          throw new Error("no such user is logged in");
       }
-    } ;
+    } 
   }
 
 // dockScooter method ==> calls Scooter class method//
@@ -99,9 +99,10 @@ class ScooterApp {
         Scooter.rent(user);
         console.log("scooter is rented");
       } else {
-        throw new Error("scooter already rented")
+        throw new Error("scooter already rented");
     }  // return error "scooter already rented"; OTHERWISE rent() and log "scooter is rented"
   }
+}
 
   print(){
     console.log("User info : "+User+";\n");
