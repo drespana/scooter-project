@@ -31,7 +31,7 @@ describe("registerUser method tests", () => {
   })
 
   // test dock scooter method
-  test ("Should return scooter to end of station array", () => {
-    expect();
+  test ("Should return scooter to station", () => {
+    expect(scooter.station).toBe(!null);
   })
 });

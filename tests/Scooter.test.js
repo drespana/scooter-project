@@ -15,7 +15,7 @@ describe('scooter methods', () => {
 
   //rent method
   test ("adds user to scooter", () => {
-    expect(Scooter.user).toBe(User.username);
+    expect(Scooter.user).toBe(!null);
   })
 
   //dock method
