@@ -1,5 +1,4 @@
 
-
 const User = require('../src/User');
 
 const user = new User("Joe Bloggs", "test123", 21);
@@ -25,13 +24,15 @@ describe("User property tests", () => {
 describe("User login tests", () => {
   // test password
   test("loggedIn should be true", ()=> {
-    expect(user.loggedIn()).toBe("true");
+    const user = new User("Joe Bloggs", "test123", 21);
+    user.login(user.password);
+    expect(user.loggedIn).toBe(true);
   })
 })
 
 // test logout
 describe("User logout tests", ()=> {
   test("loggedIn should be false", ()=> {
-    expect(user.loggedIn()).toBe("false");
+    expect(user.loggedIn).toBe(false);
   })
 })

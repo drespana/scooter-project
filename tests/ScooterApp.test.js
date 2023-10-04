@@ -9,20 +9,23 @@ const scooterApp = new ScooterApp();
 
 // register user
 describe("registerUser method tests", () => {
-  // beforeAll/beforeEach
+    const user = new User("Joe Bloggs", "test123", 21);
+
   test("Should return instance of User", () => {
-    let response = scooterApp.registerUser("Joe Bloggs", "test123", 21);
+    let response = scooterApp.registerUsers("Joe Bloggs", "test123", 21);
     expect(response).toBeInstanceOf(User);
   });
   
   // test login() method
   test ("Should return loggedIn true", () => {
-    expect(password == this.password).toBe("true");
+    let response = scooterApp.loginUser(user.username, user.password);
+    expect(response).toEqual("user has been logged in");
   })
 
   // test logout() method
   test ("Should return loggedIn false", () => {
-    expext(loggedIn).toBe("false");
+    user.logout();
+    expect(user.loggedIn).toBe(false);
   })
 
   // test rent scooter method
@@ -32,6 +35,6 @@ describe("registerUser method tests", () => {
 
   // test dock scooter method
   test ("Should return scooter to station", () => {
-    expect(scooter.station).toBe(!null);
+    expect();
   })
 });

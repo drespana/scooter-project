@@ -1,10 +1,11 @@
 const Scooter = require('../src/Scooter')
 const User = require('../src/User')
 
+    const scooter = new Scooter();
+
 //typeof scooter === object
 describe('scooter object', () => {
   test('Scooter class should create Scooter instance', () => {
-    const scooter = new Scooter();
     expect(scooter).toBeInstanceOf(Scooter);
   });
 })
@@ -15,15 +16,20 @@ describe('scooter methods', () => {
 
   //rent method
   test ("adds user to scooter", () => {
-    expect(Scooter.user).toBe(!null);
+    const user = new User("Joe Bloggs", "test123", 21);
+    scooter.rent(user);
+    let response = scooter.user;
+    expect(response).toBeInstanceOf(User);
   })
 
   //dock method
   test ("clears user", () => {
-    expect(Scooter.user).toBe(null);
+    scooter.dock("Chicago");
+    expect(scooter.user).toBe(null);
   })
 
   test ("adds station", ()=> {
-    expect (Scooter.station).toBe(!null);
+    scooter.dock("Chicago");
+    expect(scooter.station).toEqual("Chicago");
   })
 })
