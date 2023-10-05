@@ -1,40 +1,34 @@
 
+
 const User = require('./User')
 const Scooter = require('./Scooter')
 
 class ScooterApp {
   // ScooterApp code here
   constructor(stations, registeredUsers){
-    registeredUsers = {};
-    this.registeredUsers = registeredUsers;
+    this.registeredUsers = [];
     stations = {
-      "Chicago":[1, 2, 3],
-      "Austin":[1, 2, 3],
-      "New York":[1, 2, 3]
+      "Chicago":[],
+      "Austin":[],
+      "New York":[]
     }
     this.stations = stations;
   }
 
 // registerUsers() method // i really hope this works, i used my whole noodle
-  registerUsers(username, password, age){
-    this.password = password;
+  registerUser(username, password, age){
     // check if username already exists
-    if (username in this.registeredUsers){
+    if (this.registeredUsers[username]){
       throw new Error("already registered");
-    } else {
-      this.username = username;
-    } // set username 
+    }  // set username 
     // check age before setting and return error if under 18
     if (age < 18){
     throw new Error("too young to register")
-    } else {
-      this.age = age;
-    } // sets the age if the input is 18+; returns error if <18 //
+    }  // sets the age if the input is 18+; returns error if <18 //
     // create user object
-    const user = this.username;
-    user = new User(this.username, this.password, this.age);
-    this.registeredUsers.push(user);
-    console.log("user has been registered");
+    const user = new User(username, password, age);
+    this.registeredUsers[username] = user;
+    console.log("user "+user+" has been registered");
     return user;
   } // return user object
 
@@ -54,20 +48,21 @@ class ScooterApp {
 
 // loginUser() method // 
   loginUser(username, password){
+    const user = this.registeredUsers[username];
     // locate the registered user by name and call its login method //
-    for (let i = 0; i < this.registerUsers.length; i++){
-      if (username in this.registeredUsers){
+      if (this.registeredUsers[username]){
         // if username is found, verify password //
-        User.login(password); 
-        console.log("user has been logged in"); 
+        user.login(password); 
+        return console.log("user has been logged in"); 
       } else {
         throw new Error("username or password is incorrect"); 
       }
-    }// call login() method from User class; return error if username or password is incorrect; OTHERWISE login user //
+    // call login() method from User class; return error if username or password is incorrect; OTHERWISE login user //
   } 
 
 // logoutUser() method ==> calls User class method// 
   logoutUser(username){
+    const user = this.registeredUsers[username]
     for (let i = 0; i < this.registeredUsers.length; i++){
       if (username == this.registeredUsers[i]){
         username.logout();
@@ -80,11 +75,11 @@ class ScooterApp {
 
 // dockScooter method ==> calls Scooter class method//
   dockScooter(scooter, station){
-    if (station in this.stations['this.staion']){
-      if (scooter.serial in this.station){
+    if (!this.stations.includes(this.stations[station])){
+      if (scooter in this.stations[station]){
         throw new Error("scooter already at station");
         } else {
-            Scooter.dock(station);
+            scooter.dock(station);
           }
       } else { 
         throw new Error("no such station");
@@ -93,23 +88,31 @@ class ScooterApp {
 
 // rentScooter method ==> calls Scooter and User class methods//
   rentScooter(scooter, user){
-    for (let i = 0; i < this.stations['this.station'].length; i++){
-      // locate scooter
-      if (scooter.serial in station[i]){
-        Scooter.rent(user);
-        console.log("scooter is rented");
-      } else {
-        throw new Error("scooter already rented");
-    }  // return error "scooter already rented"; OTHERWISE rent() and log "scooter is rented"
-  }
+    // locate scooter 
+    for (let i = 0; i < this.stations[scooter.station].length; i++){
+      if (scooter == this.stations[scooter.station][1]){
+        this.stations[scooter].splice(1, '');
+        console.log("scooter is rented")
+        return scooter.station = null, scooter.user = user;
+      }
+    }
+
+    if (!this.stations[scooter.station]){
+      throw new Error("no such station");
+    }
+
+    if (!scooter.station){
+      throw new Error("scooter already rented")
+    }
 }
 
   print(){
     console.log("User info : "+User+";\n");
     console.log("Scooter info : "+Scooter+";\n");
-    console.log("Stations : "+ this.stations + ";\n");
     console.log("Users : "+ this.registeredUsers +";");
+    console.log("Stations: "+ this.stations[station].length)
   }
 }
+
 
 module.exports = ScooterApps

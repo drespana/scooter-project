@@ -10,14 +10,15 @@ const scooterApp = new ScooterApp();
 // register user
 describe("registerUser method tests", () => {
     const user = new User("Joe Bloggs", "test123", 21);
+    const scooter = new Scooter();
 
   test("Should return instance of User", () => {
-    let response = scooterApp.registerUsers("Joe Bloggs", "test123", 21);
+    let response = scooterApp.registerUser("Joe Bloggs", "test123", 21);
     expect(response).toBeInstanceOf(User);
   });
   
-  // test login() method
-  test ("Should return loggedIn true", () => {
+  // test loginUser() method
+  test ("Should log to console user has been logged in", () => {
     let response = scooterApp.loginUser(user.username, user.password);
     expect(response).toEqual("user has been logged in");
   })
@@ -30,11 +31,13 @@ describe("registerUser method tests", () => {
 
   // test rent scooter method
   test ("Should display scooter is rented", () => {
-    expect();
+    let response = scooterApp.rentScooter(scooter, user);
+    expect(response).toEqual("scooter is rented");
   })
 
   // test dock scooter method
   test ("Should return scooter to station", () => {
-    expect();
+    let response = scooterApp.dockScooter(scooter);
+    expect(response).toEqual("scooter is docked");
   })
-});
+})
